@@ -19,7 +19,7 @@ const TIME_NODE = {
 	limit: 50, //人数限制
 	isLimit: false,
 	status: 1,
-	stat: { //统计数据 
+	stat: { // 统计数据 
 		succCnt: 0,
 		cancelCnt: 0,
 		adminCancelCnt: 0,

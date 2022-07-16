@@ -1,7 +1,7 @@
 /**
  * Notes: 缓存实体
- * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY cclinux@qq.com
- * Date: 2022-01-26 19:20:00 
+ * Ver : CCMiniCloud Framework 2.0.1 ALL RIGHTS RESERVED BY cclinux@qq.com 
+ * Date: 2022-01-26 19:20:00  
  */
 
 

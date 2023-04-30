@@ -1,0 +1,50 @@
+@import '../../../../../../style/public/admin.wxss';
+@import '../../../../../../style/base/table.wxss';
+
+page {
+	background-color: #f8f8f8;
+}
+
+.main-admin {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 0rpx 0rpx 30rpx;
+}
+
+.table .table-form .oprt .min-btn {
+	padding: 5rpx 30rpx;
+}
+
+.table .tbody .td.detail {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+}
+
+.table .tbody .td.detail>text {
+	width: 100%;
+	border-bottom: 1rpx dashed #eee;
+	padding: 5rpx 0rpx;
+	text-align: left;
+	font-size: 24rpx;
+}
+
+.table .tbody .td.detail>text:last-child {
+	border-bottom: 0;
+}
+
+.table .tbody .oprt {
+	font-size: 24rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	height: inherit;
+	padding: 5rpx 0;
+}
+
+.table .tbody .oprt>view {
+	line-height: 50rpx;
+	height: 50rpx;
+}

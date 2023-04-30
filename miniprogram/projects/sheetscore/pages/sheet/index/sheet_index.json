@@ -1,0 +1,6 @@
+{
+	"usingComponents": { 
+	}, 
+	"disableScroll": true, 
+	"navigationBarTitleText": "成绩查询"
+}

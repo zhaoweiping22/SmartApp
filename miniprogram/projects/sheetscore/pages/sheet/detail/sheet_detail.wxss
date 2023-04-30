@@ -1,0 +1,146 @@
+@import "../../../../../style/public/comm_box_list.wxss";
+@import "../../../style/skin.wxss";
+
+
+.main {
+	padding: 30rpx 20rpx !important;
+}
+
+.all-title {
+	width: 100%;
+	letter-spacing: 2rpx;
+	color: #BD9759;
+	text-align: center;
+	font-size: 36rpx;
+	padding: 10rpx 20rpx 0rpx;
+	font-weight: bold;
+}
+
+.search-list {
+	width: 100%;
+	margin-top: 35rpx;
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	border-radius: 10rpx;
+}
+
+.search-list .item {
+	width: 100%;
+	display: flex;
+	padding: 25rpx 30rpx;
+	align-items: baseline;
+	border-bottom: 2rpx dashed #eee;
+	font-size: 30rpx;
+}
+
+.search-list .item:last-child {
+	margin-bottom: 0rpx;
+}
+
+.search-list .item .left {
+	width: 30%;
+	text-align: center;
+	color: #000;
+	font-weight: bold;
+	text-overflow: clip;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.search-list .item .right {
+	flex: 1;
+	color: #666;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	padding-left: 10rpx;
+}
+
+.search-btn {
+	width: 100%;
+	font-size: 30rpx;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-image: linear-gradient(45deg, #E6BA73, #BE9758);
+	color: #fff;
+	padding: 20rpx 0;
+	letter-spacing: 10rpx;
+	margin-top: 30rpx;
+	border-radius: 10rpx;
+}
+
+.query-result {
+	width: 100%;
+	margin-top: 50rpx;
+	background-color: #fff;
+	border-radius: 10rpx; 
+	padding: 40rpx 0;
+}
+
+.query-result .title {
+	color: #333;
+	font-size: 36rpx;
+	padding: 0rpx 0rpx 60rpx;
+	width: 100%;
+	text-align: center;
+	letter-spacing: 4rpx;
+	font-weight: bold;
+}
+
+.query-result .no {
+	color: #999;
+	font-size: 26rpx;
+	width: 100%;
+	text-align: center;
+	letter-spacing: 4rpx;
+}
+
+.query-result .list {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 40rpx;
+}
+
+.query-result .list .item {
+	width: 100%;
+	display: flex;
+	font-size: 30rpx;
+	border-bottom: 2rpx dashed #eee;
+	align-items: baseline;
+	padding: 20rpx 0;
+}
+
+.query-result .list .item:last-child {
+	border-bottom: 0rpx;
+}
+
+.query-result .list .item .left {
+	width: 30%;
+	color: #376BD0;
+	text-align: center;
+	font-weight: bold;
+}
+
+.query-result .list .item .right {
+	flex: 1;
+	color: #333;
+	display: flex;
+	align-items: center;
+	justify-content: left;
+	padding-left: 10rpx;
+}
+
+.oprt {
+	width: 100%;
+	padding: 30rpx 20rpx;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+	line-height: 1.4;
+	background-color: #fff;
+	color: #999;
+	letter-spacing: 2rpx;
+	margin-top: 40rpx;
+}

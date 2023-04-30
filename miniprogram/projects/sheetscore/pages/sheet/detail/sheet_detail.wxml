@@ -1,0 +1,41 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+<block wx:if="{{isLoad}}">
+	<view class="main">
+		<view class="all-title">《{{sheet.SHEET_TITLE}}》</view>
+
+
+		<view wx:if="{{sheet.SHEET_OBJ.desc}}" class="oprt shadow-project"><text>{{sheet.SHEET_OBJ.desc}}</text></view>
+		
+		<view class="search-list shadow-project">
+			<view class="item" wx:for="{{queryArr}}" wx:key="k">
+				<view class="left">{{item.title}}</view>
+				<view class="right">
+					<input bindinput="bindBlur" placeholder="请输入" bindblur="bindBlur" placeholder-class="phc" maxlength="50" data-idx="{{index}}" value="{{item.val}}" />
+				</view>
+			</view>
+		</view>
+		<view bindtap="bindSubmitTap" class="search-btn shadow-project">马上查询</view> 
+	
+		<view class="query-result shadow-project" wx:if="{{isQuery}}">
+			<view class="title">查询结果</view>
+			<view wx:if="{{list.length==0}}" class="no">暂无匹配结果!</view>
+
+			<block wx:for="{{list}}" wx:key="key">
+				<view class="list">
+					<view class="item" wx:for="{{item.SHEET_DATA_FORMS}}" wx:key="k" wx:for-item="itm">
+						<view class="left text-cut">{{itm.title}}</view>
+						<view class="right">{{itm.val}} </view>
+					</view>
+				</view> 
+			</block> 
+		</view> 
+
+	</view>
+	<view style="height: 100rpx;"></view>
+
+	<cmpt-detail mode="mode1" topBtnShow="{{topBtnShow}}"  oid="{{sheet._id}}" cate="{{sheet.SHEET_CATE_NAME}}" title="{{sheet.SHEET_TITLE}}" cover="{{sheet.SHEET_OBJ.cover[0]||'/projects/sheetscore/images/q.jpg'}}" qr="{{sheet.SHEET_QR}}" desc="查询成绩"  bg="#BD9759"></cmpt-detail>
+</block>
+<!-- top begin -->
+<button wx:if="{{topShow}}" class="btn-fixed bg-gray text-gray btn-top" bindtap="bindTopTap" style="bottom:60rpx"><text class="icon-top"></text></button>
+<!-- top END. -->

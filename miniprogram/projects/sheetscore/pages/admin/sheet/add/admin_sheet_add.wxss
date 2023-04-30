@@ -1,0 +1,5 @@
+@import '../../../../../../style/public/admin.wxss';
+ 
+.form-group-line {
+	min-height: 20rpx!important; 
+}

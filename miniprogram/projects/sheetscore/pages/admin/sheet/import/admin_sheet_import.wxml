@@ -1,0 +1,64 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l text-grey"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l text-grey"></view>
+
+<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
+	<form bindsubmit="bindFormSubmit">
+		<view class="form-box shadow">
+			<view class="form-group">
+				<view class="title text-cut">《{{sheet.SHEET_TITLE}}》</view>
+			</view>
+
+
+			<view class="hint-desc text-bold" style="padding-top:10rpx"><text class="icon-info margin-right-xxs"></text>注意事项</view>
+			<view class="hint-desc">1. 请选择后缀名为xlsx的Excel文件导入</view>
+			<view class="hint-desc">2. 每次导入数据不超过10000条</view>
+			<view class="hint-desc">3. Excel表格第一行为标题，不作为导入数据</view>
+
+			<view class="hint-desc text-bold margin-top-xs"><text class="icon-form margin-right-xxs"></text>Excel数据格式：</view>
+			<view class="hint-desc text-bold fmt">
+				<view class="inner">
+					<block wx:for="{{sheet.SHEET_OBJ.fields}}" wx:key="k"> <text>{{item.title}}</text> <text class="margin-left-xs margin-right-xs" wx:if="{{index!=(sheet.SHEET_OBJ.fields.length-1)}}">|</text></block>
+				</view>
+			</view>
+
+			<view class="form-group">
+				<view class="title">导入时是否清空已有数据</view>
+				<switch wx:if="{{formClear}}" bindchange="switchModel" data-item="formClear" class="green sm" checked="true">
+				</switch>
+				<switch wx:elif="{{!formClear}}" bindchange="switchModel" data-item="formClear" class="green sm"></switch> 
+			</view>
+
+			<view class="form-group" bindtap="bindTempTap">
+				<view class="title" style="font-size:28rpx"><text class="icon-down margin-right-xxs"></text>数据模板 (Excel) </view>
+
+				<button hover-class="button-hover" class="btn bg-green mid text-white shadow">下载</button>
+			</view>
+
+
+			<block wx:if="{{tempUrl}}">
+				<view class="form-group">
+					<view class="title" style="font-size:28rpx"><text class="icon-link margin-right-xxs"></text>模板下载链接 </view>
+
+					<button hover-class="button-hover" class="btn bg-admin mid text-white shadow" bindtap="url" data-type="copy" data-url="{{tempUrl}}">复制</button>
+				</view>
+
+				<!--<view class="form-group align-start" bindtap="url" data-type="copy" data-url="{{tempUrl}}">
+					<textarea maxlength="1000" placeholder-class="phc" value="{{tempUrl}}" style="height:50rpx"></textarea>
+				</view>-->
+
+				<view class="form-group" style="justify-content: center;">
+					<button bindtap="bindOpenTap" class="btn bg-purple light">直接打开模板文件</button>
+				</view>
+
+
+			</block>
+		</view>
+
+
+		<view class="padding-bottom flex  flex-direction  ">
+			<button formType="submit" class="btn-admin bg-blue margin-top-s text-bold large bg-{{skin}}">导入数据文件</button>
+		</view>
+
+
+	</form>
+</view>

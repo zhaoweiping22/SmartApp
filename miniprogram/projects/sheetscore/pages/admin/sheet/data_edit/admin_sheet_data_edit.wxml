@@ -1,6 +1,0 @@
-<view wx:if="{{!isLoad}}" class="margin-top load loading text-l text-grey"></view>
-<view class="main-admin" wx:if="{{isAdmin&&isLoad}}">
-	<include src="../data_add/admin_sheet_data_form_tpl.wxml" />
-
- 
-</view>

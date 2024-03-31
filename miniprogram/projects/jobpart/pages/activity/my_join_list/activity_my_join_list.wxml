@@ -1,0 +1,55 @@
+<block wx:if="{{isLoad}}">
+	<cmpt-comm-list  _params="{{_params}}" type="my_activity_join" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="activity/my_join_list" isTotalMenu="{{true}}" sortMenusDefaultIndex="0" topBottom="120" placeholder="搜索职位" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+
+		</view>
+
+		<!-- List Begin -->
+		<view class="text-pic-list-box padding-project">
+
+			<view class="item card-project shadow-project" wx:for="{{dataList.list}}" wx:key="index"> 
+				<image  wx:if="{{item.ACTIVITY_JOIN_STATUS==0}}" class="status" src="../../../images/my/wait.png" />
+				<image  wx:if="{{item.ACTIVITY_JOIN_STATUS==1}}" class="status" src="../../../images/my/succ.png" />
+				<image  wx:if="{{item.ACTIVITY_JOIN_STATUS==99}}" class="status" src="../../../images/my/un.png" />
+
+				<view class="title content-cut-two">{{item.ACTIVITY_JOIN_ACTIVITY_TITLE}}</view>
+				<view class="data">
+					申请时间：<text class="text-cut">{{item.ACTIVITY_JOIN_ADD_TIME}}</text>
+				</view>
+				<view class="data" wx:if="{{item.ACTIVITY_JOIN_ACTIVITY_CATE_NAME}}">
+					企业：<text class="text-cut">{{item.ACTIVITY_JOIN_ACTIVITY_CATE_NAME}}</text>
+				</view>
+
+				<view class="data">
+					<text wx:if="{{item.ACTIVITY_JOIN_STATUS==0}}" style="color:#38BDFE"><text class="icon-newshot margin-right-xxs"></text>待审核</text> 
+
+					<text wx:if="{{item.ACTIVITY_JOIN_STATUS==1}}" style="color:#25B195"><text class="icon-check margin-right-xxs"></text>已录用 </text> 
+
+					<block wx:elif="{{item.ACTIVITY_JOIN_STATUS==99}}">
+						<text style="color:#FD5455"><text class="icon-roundclose margin-right-xxs"></text>未录用<text class="text-grey" wx:if="{{item.ACTIVITY_JOIN_REASON}}">：{{item.ACTIVITY_JOIN_REASON}}</text></text>
+					</block>
+
+				</view>
+
+				<view class="data data-button">
+					<button bindtap="url" data-url="../detail/activity_detail?id={{item.ACTIVITY_JOIN_ACTIVITY_ID}}" class="btn mid bg-gray text-black">查看职位详情</button>
+					<button wx:if="{{(item.ACTIVITY_JOIN_STATUS==1||item.ACTIVITY_JOIN_STATUS==0)}}" bindtap="bindCancelTap" data-id="{{item._id}}" class="btn mid bg-grey light"><text class="icon-close"></text>取消</button>
+				</view>
+
+			</view>
+
+			<!--load begin-->
+			<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+			<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+			<!--load end-->
+
+		</view>
+		<!-- List END -->
+
+	</cmpt-comm-list>
+
+	<!--  button Begin -->
+	<!--  button END -->
+
+</block>

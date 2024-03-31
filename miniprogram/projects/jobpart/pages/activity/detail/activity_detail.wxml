@@ -1,0 +1,141 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+
+	<view class="main">
+
+		<view class="detail shadow-project">
+			<view class="title big">{{activity.ACTIVITY_TITLE}}</view>
+			<view class="price">{{activity.ACTIVITY_OBJ.money}}</view>
+			<view class="tag-list">
+				<view class="type">{{activity.ACTIVITY_OBJ.type}}</view>
+				<view class="type">{{activity.ACTIVITY_OBJ.biz}}</view>
+				<view wx:if="{{activity.ACTIVITY_MAX_CNT==0}}">人数不限</view>
+				<view wx:else>招{{activity.ACTIVITY_MAX_CNT}}人</view>
+				<view>{{activity.ACTIVITY_OBJ.pay}}</view>
+				<view wx:for="{{activity.ACTIVITY_OBJ.tag}}" wx:key="k">{{item.title}}</view>
+			</view>
+		</view>
+
+
+
+		<view bind:tap="url" data-url="../../cate/detail/cate_detail?id={{activity.ACTIVITY_CATE_ID}}" class="detail shadow-project" wx:if="{{activity.cate}}">
+			<!--<view class="title">发布企业</view>-->
+			<view class="company">
+				<view class="left">
+					<image src="{{activity.cate.CATE_OBJ.cover[0]}}" class="loading" mode="aspectFill" />
+				</view>
+				<view class="right">
+					<view class="top">{{activity.cate.CATE_TITLE}}</view>
+					<view class="bottom">{{activity.cate.CATE_CNT}}个职位</view>
+				</view>
+			</view>
+		</view>
+
+		<view class="rule">
+			<view class="item {{activity.statusDesc=='招聘中'?'bg-olive':'bg-orange'}} light" style="border-color:{{activity.statusDesc=='招聘中'?'#B6DB84':'#F8B076'}}">
+				<text class="t1"><text wx:if="{{activity.ACTIVITY_MAX_CNT==0}}">人数不限</text> <text wx:else>{{activity.ACTIVITY_JOIN_CNT}}<text class="margin-left-xxs margin-right-xxs">/</text>{{activity.ACTIVITY_MAX_CNT}}</text></text>
+				<text class="t2">{{activity.statusDesc}}</text>
+			</view>
+			<view class="item bg-blue light" style="border-color: #85b1fc">
+				<text class="t1">{{activity.end}}</text>
+				<text class="t2">截止申请时间</text>
+			</view>
+			<view class="item bg-pink light" style="border-color: #f5b2d8">
+				<text class="t1">
+					<text wx:if="{{activity.ACTIVITY_CHECK_SET==0}}">申请后无需审核</text>
+					<text wx:if="{{activity.ACTIVITY_CHECK_SET==1}}">申请后需要系统审核</text>
+				</text>
+				<text class="t2">审核规则</text>
+			</view>
+			<view class="item bg-cyan light" style="border-color: #55dbd5">
+				<text class="t1">
+					<text wx:if="{{activity.ACTIVITY_CANCEL_SET==0}}">申请后不可取消</text>
+					<text wx:if="{{activity.ACTIVITY_CANCEL_SET==1}}">申请后随时可取消</text>
+					<text wx:if="{{activity.ACTIVITY_CANCEL_SET==2}}">申请截止前可取消</text>
+				</text>
+				<text class="t2">取消规则</text>
+			</view>
+		</view>
+
+
+		<view class="detail  shadow-project">
+
+			<view class="line1">
+				<view class="left">
+					<image src="../../../images/detail/task.png" />
+				</view>
+				<view class="right">
+					<view class="top">工作日期</view>
+					<view class="bottom">{{activity.ACTIVITY_OBJ.date}}</view>
+				</view>
+			</view>
+
+			<view class="line1">
+				<view class="left">
+					<image src="../../../images/detail/time.png" />
+				</view>
+				<view class="right">
+					<view class="top">工作时间</view>
+					<view class="bottom">{{activity.ACTIVITY_OBJ.time}}</view>
+				</view>
+			</view>
+
+			<view class="line1">
+				<view class="left">
+					<image src="../../../images/detail/person.png" />
+				</view>
+				<view class="right">
+					<view class="top">人员要求</view>
+					<view class="bottom">{{activity.ACTIVITY_OBJ.person}}</view>
+				</view>
+			</view>
+
+			<!--
+			<view class="line1">
+				<view class="left">
+					<image src="../../../images/detail/money.png" />
+				</view>
+				<view class="right">
+					<view class="top">报酬</view>
+					<view class="bottom">{{activity.ACTIVITY_OBJ.money}}</view>
+				</view>
+			</view>-->
+
+			<view class="line1">
+				<view class="left">
+					<image src="../../../images/detail/location.png" />
+				</view>
+				<view class="right" bindtap="bindOpenMapTap" data-address="{{activity.ACTIVITY_ADDRESS}}" data-geo="{{activity.ACTIVITY_ADDRESS_GEO}}">
+					<view class="top">工作地点</view>
+					<view class="bottom">{{activity.ACTIVITY_ADDRESS}} <text class="icon-right text-grey"></text></view>
+				</view>
+			</view>
+		</view>
+		<view class="detail  shadow-project">
+			<view class="title">详细说明</view>
+
+			<view class="line2 margin-top-s margin-bottom">
+				<text>{{activity.ACTIVITY_OBJ.desc}}</text>
+			</view>
+		</view>
+
+	</view>
+
+	<view style="height:200rpx"></view>
+
+
+	<cmpt-detail mode="mode2" topBtnShow="{{topBtnShow}}" tag="{{activity.myActivityJoinTag}}" oid="{{activity._id}}" cate="{{activity.ACTIVITY_OBJ.type}}" title="{{activity.ACTIVITY_TITLE}}" cover="/projects/jobpart/images/job.jpg" qr="{{activity.ACTIVITY_QR}}" desc="查看职位详情" bg="{{skin.PROJECT_COLOR}}">
+		<view class="bottom-line">
+			<button open-type="contact" send-message-title="{{activity.ACTIVITY_TITLE}}" send-message-path="{{'/projects/jobpart/pages/activity/detail/activity_detail?id='+ activity._id}}" show-message-card="true" class="clearbtn join bg-yellow light ">在线咨询</button>
+
+
+			<view bindtap="bindJoinTap" wx:if="{{activity.myActivityJoinTag!='未被录用'&& activity.statusDesc=='招聘中'&&!activity.myActivityJoinId}}" class="join bg-project margin-left-s">我要申请</view>
+			<view wx:elif="{{activity.myActivityJoinTag=='未被录用'&& activity.statusDesc=='招聘中'&&!activity.myActivityJoinId}}" class="join bg-grey light margin-left-s">我申请过</view>
+			<view bindtap="bindCancelJoinTap" wx:elif="{{activity.myActivityJoinId}}" class="join bg-grey light  margin-left-s">取消申请</view>
+			<view wx:else class="join bg-grey light margin-left-s">{{activity.statusDesc}}</view>
+		</view>
+	</cmpt-detail>
+
+</block>

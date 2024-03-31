@@ -1,0 +1,42 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l load-project"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l load-project"></view>
+
+<block wx:if="{{isLoad}}">
+	<view class="main padding-project">
+		<view class="article-box margin-top-xs">
+			<!-- article content begin -->
+			<view class="article card-project shadow-project">
+				<view class="title"><text user-select="true">{{cate.CATE_TITLE}}</text></view>
+				<view class="tag-list"> 
+							<view>{{cate.CATE_OBJ.trade}}</view> 
+							<view>{{cate.CATE_OBJ.type}}</view>  
+							<view>{{cate.CATE_OBJ.size}}</view> 
+							<view>{{cate.CATE_OBJ.star}}</view> 
+						</view>
+
+				<view class="job" bind:tap="url" data-url="../../activity/query/activity_query?search={{cate.CATE_TITLE}}">
+					<view>职位数：{{cate.CATE_CNT}}</view>
+					<text class="icon-right" style="color: #ccc;"></text>
+				</view>
+
+				<block wx:for="{{cate.CATE_OBJ.content}}" wx:key="key">
+					<view class="content" wx:if="{{item.type=='text'}}">
+						<text user-select="{{true}}">{{item.val}}</text>
+					</view>
+
+					<view class="pics" wx:if="{{item.type=='img'}}">
+						<image bindtap="url" data-type='img' data-url="{{item.val}}" show-menu-by-longpress="{{true}}" class="loading" mode='widthFix' lazy-load="true" src="{{item.val}}">
+						</image>
+					</view>
+				</block>
+				<!-- article content end -->
+
+			</view>
+			<!-- article content end -->
+
+		</view>
+
+	</view>
+
+	<cmpt-detail mode="mode1" topBtnShow="{{topBtnShow}}" oid="{{cate._id}}" cate="企业库" title="{{cate.CATE_TITLE}}" cover="{{cate.CATE_OBJ.cover[0]}}" qr="{{cate.CATE_QR}}" desc="查看详情" bg="{{skin.PROJECT_COLOR}}"></cmpt-detail>
+</block>

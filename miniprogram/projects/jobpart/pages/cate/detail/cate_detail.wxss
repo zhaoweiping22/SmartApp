@@ -1,0 +1,30 @@
+@import "../../../../../style/public/detail.wxss";
+@import "../../../style/skin.wxss";
+
+.job {
+	width: 100%;
+	padding: 20rpx 30rpx;
+	display: flex;
+	justify-content: space-between;
+	border-radius: 10rpx;
+	font-size: 28rpx;
+	margin: 30rpx 0 10rpx;
+	background-color: #FFF3E7;
+	color: #FF8812;
+}
+
+.tag-list {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.tag-list>view {
+	padding: 4rpx 10rpx;
+	border-radius: 4rpx;
+	background-color: #f8f8f8;
+	font-size: 22rpx;
+	margin-right: 10rpx;
+	color: #777;
+	margin-top: 10rpx;
+}

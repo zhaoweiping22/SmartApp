@@ -1,0 +1,116 @@
+<view wx:if="{{isLoad===null}}" class="margin-top load notexist text-l text-grey"></view>
+<view wx:if="{{isLoad===false}}" class="margin-top load loading text-l text-grey"></view>
+
+<block wx:if="{{isAdmin&&isLoad}}">
+
+	<cmpt-comm-list source='admin' id="cmpt-comm-list" type="admin-activity-join-list" search="{{search||''}}" _params="{{_params}}" _menus="{{sortMenus}}" _items="{{sortItems}}" route="admin/activity_join_list" topBottom="50" placeholder="搜索" sortMenusDefaultIndex="0" bind:list="bindCommListCmpt">
+
+		<view slot="searchEnd">
+			 
+		</view>
+
+		<!-- List Begin -->
+		<view class="join-list">
+			<view wx:if="{{dataList && dataList.total }}" class="load text-grey">共有{{dataList.total}}条符合条件记录
+
+			</view>
+
+			<view class="item" wx:for="{{dataList.list}}" wx:key="key">
+				<view class="header">
+					<view class="left">
+						<text class="icon-calendar margin-right-xxs"></text><text class="">{{item.ACTIVITY_JOIN_ADD_TIME}}</text>
+					</view>
+					<view class="right" bindtap="bindCopyTap" data-idx="{{index}}">
+						<text class="icon-copy margin-right-xxs"></text>复制资料
+					</view>
+				</view>
+
+				<view class="info">
+
+					<view class="info-item">
+						<view class="title">状态</view>
+						<view class="mao">：</view>
+						<view class="content">
+							<view wx:if="{{item.ACTIVITY_JOIN_STATUS==1}}" class="text-green"><text class="icon-roundcheck margin-right-xxs"></text>已录用
+
+							</view>
+							<view wx:elif="{{item.ACTIVITY_JOIN_STATUS==0}}" class="text-blue">等待审核</view>
+							<view wx:elif="{{item.ACTIVITY_JOIN_STATUS==99}}" class="text-grey">未录用</view>
+						</view>
+					</view>
+
+					<view class="info-item" wx:if="{{item.ACTIVITY_JOIN_STATUS==99}}">
+						<view class="title">未录用原因</view>
+						<view class="mao">：</view>
+						<view class="content">{{item.ACTIVITY_JOIN_REASON||'未填'}}</view>
+					</view>
+
+					<view class="info-item" bind:tap="url" data-url="../../user/detail/admin_user_detail?id={{item.ACTIVITY_JOIN_USER_ID}}">
+						<view class="title">用户名</view>
+						<view class="mao">：</view>
+						<view class="content"> {{item.user.USER_NAME}} <text class="text-s text-grey margin-left-xs" style="font-weight: normal;font-size: 24rpx;">[查看简历资料]</text>
+						</view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">手机</view>
+						<view class="mao">：</view>
+						<view class="content" bind:tap="url" data-type="phone" data-url="{{item.user.USER_MOBILE}}" style="display: flex;align-items: baseline;">
+							<text>{{item.user.USER_MOBILE}}</text>
+							<text class="icon-phone margin-left-xs text-grey"></text>
+						</view>
+					</view>
+
+					<view class="info-item">
+						<view class="title">职位</view>
+						<view class="mao">：</view>
+						<view class="content"> {{item.ACTIVITY_JOIN_ACTIVITY_TITLE}} </view>
+					</view>
+
+					<view class="info-item" wx:if="{{item.ACTIVITY_JOIN_ACTIVITY_CATE_NAME}}">
+						<view class="title">企业</view>
+						<view class="mao">：</view>
+						<view class="content"> {{item.ACTIVITY_JOIN_ACTIVITY_CATE_NAME}} </view>
+					</view> 
+
+					<view class="oprt">
+						<block wx:if="{{item.ACTIVITY_JOIN_STATUS==0||item.ACTIVITY_JOIN_STATUS==1}}">
+							<view bindtap="bindCancelTap" data-idx="{{index}}" data-status="99" data-old="{{item.ACTIVITY_JOIN_STATUS}}" class="btn bg-grey light  margin-right-s">设为不予录用</view>
+						</block>
+
+						<block wx:if="{{item.ACTIVITY_JOIN_STATUS==0 || item.ACTIVITY_JOIN_STATUS==99}}">
+							<view bindtap="bindStatusTap" data-idx="{{index}}" data-status="1" data-old="{{item.ACTIVITY_JOIN_STATUS}}" class="btn bg-green light margin-right-s">设为已录用</view>
+						</block>
+
+
+						<view bindtap="bindDelTap" data-idx="{{index}}" class="btn bg-orange light margin-right-s">删除</view>
+
+					</view>
+				</view>
+
+				<view class="no">{{index+1}}</view>
+			</view>
+		</view>
+		<!-- List END -->
+
+		<!--load begin-->
+		<import src="../../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{dataList,skin:'text-grey',noHint:'暂无记录'}}" />
+		<!--load end-->
+
+
+	</cmpt-comm-list>
+
+	 
+	<cmpt-modal wx:if="{{cancelModalShow}}" model:show="{{cancelModalShow}}" type="dialog" title="设为不予录用" bind:click="bindCancelCmpt" class="modal-form" cancelText="返回" confirmText="确定">
+		<view class="form-group" style="padding:0 10rpx">
+			<view class="title">不予理由 <text class="text-grey text-mid">(选填)</text>：</view>
+			<view bindtap="bindClearReasonTap" style="width:150rpx;text-align: right;" class="text-grey"><text class="icon-roundclose"></text>清空</view>
+		</view>
+
+		<view class="form-group cancel-area">
+			<textarea placeholder-class="phc" placeholder="请输入不予不过理由 (非必填)" style="height:110rpx" model:value="{{formReason}}" maxlength="100"></textarea>
+		</view>
+	</cmpt-modal>
+
+</block>

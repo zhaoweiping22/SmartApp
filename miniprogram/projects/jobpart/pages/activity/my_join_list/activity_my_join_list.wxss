@@ -1,0 +1,45 @@
+@import "../../../../../style/public/article_list.wxss";
+@import "../../../style/skin.wxss";
+
+.text-pic-list-box .item {
+	padding: 20rpx 30rpx 20rpx 40rpx;
+	position: relative;
+	overflow: hidden;
+}
+
+.text-pic-list-box .item .status {
+	z-index: 9999;
+	position: absolute;
+	top: 8rpx;
+	right: 10rpx;
+	width: 110rpx;
+	height: 110rpx; 
+}
+
+.btn.mid {
+	padding: 0 30rpx;
+}
+
+.text-pic-list-box .item .author {
+	font-size: 28rpx;
+	color: #999;
+}
+
+.text-pic-list-box .item .title {
+	position: relative;
+	padding-right: 20rpx;
+}
+
+.text-pic-list-box .item .data {
+	line-height: 1.5;
+	font-size: 24rpx;
+	color: #999;
+	margin-top: 10rpx;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.text-time {
+	color: #ccc;
+}

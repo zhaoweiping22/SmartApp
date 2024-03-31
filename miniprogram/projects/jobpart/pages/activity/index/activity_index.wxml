@@ -1,0 +1,59 @@
+<view wx:if="{{!isLoad}}" class="margin-top load loading text-l load-project"></view>
+<block wx:else>
+
+	<cmpt-comm-list pulldownType="{{['modal','modal','modal','modal','modal']}}" type="activity-list" _params="{{_params}}" search="{{search||''}}" _menus="{{sortMenus}}" _items="{{sortItems}}" sortMenusDefaultIndex="0" route="activity/list" topBottom="120" isTotalMenu="{{isTotalMenu}}" placeholder="搜索职位，企业，门店" bind:list="bindCommListCmpt">
+		<view class="main">
+			<view class="list">
+				<view class="item shadow-project" wx:for="{{dataList.list}}" wx:key="key" bindtap="url" data-url="../detail/activity_detail?id={{item._id}}">
+					<view class="top">
+						<view class="title">
+							<view class="left">{{item.ACTIVITY_TITLE}}</view>
+							<view class="right text-cut">{{item.ACTIVITY_OBJ.money}}</view>
+						</view>
+						<view class="desc content-cut-one">
+							<text>{{item.ACTIVITY_OBJ.date}}</text>
+							<text class="text-black margin-left-xs margin-right-xs">|</text>
+							<text>{{item.ACTIVITY_OBJ.time}}</text>
+						</view>
+						<view class="tag-list">
+							<view class="type">{{item.ACTIVITY_OBJ.type}}</view>
+							<view class="type">{{item.ACTIVITY_OBJ.biz}}</view>
+							<view wx:if="{{item.ACTIVITY_MAX_CNT==0}}">人数不限</view>
+							<view wx:else>招{{item.ACTIVITY_MAX_CNT}}人</view>
+							<view>{{item.ACTIVITY_OBJ.pay}}</view>
+							<view wx:for="{{item.ACTIVITY_OBJ.tag}}" wx:for-item="itm" wx:key="k">{{itm.title}}</view>
+						</view>
+					</view>
+					<view class="line">
+						<view class="left">
+							<block wx:if="{{item.cate&&item.cate.CATE_TITLE}}">
+								<image mode="aspectFit" class="loading" lazy-load="{{true}}" src="{{item.cate.CATE_OBJ.cover[0]}}" />
+								<text>{{item.cate.CATE_TITLE}}</text>
+							</block>
+						</view>
+						<view class="join {{item.statusDesc=='招聘中'?'active':''}}">
+							<text wx:if="{{item.statusDesc=='招聘中'}}">立即申请</text>
+							<text wx:else>{{item.statusDesc}}</text>
+						</view>
+					</view>
+				</view>
+
+			</view>
+
+		</view>
+
+
+		<!--load begin-->
+		<import src="../../../../../tpls/public/list_load_tpl.wxml" />
+		<template is="listLoadTpl" data="{{skin:'load-project',dataList}}" />
+		<!--load end-->
+
+	</cmpt-comm-list>
+
+
+	<block wx:if="{{skin.IS_SUB&&isTotalMenu}}">
+		<import src="../../tpls/menu_tpl.wxml" />
+		<template is="menuTpl" data="{{skin,curMenu:'activity_index',returnHome}}" />
+	</block>
+
+</block>

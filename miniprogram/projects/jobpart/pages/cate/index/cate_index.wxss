@@ -1,0 +1,74 @@
+@import "../../../style/skin.wxss";
+
+.list {
+	width: 100%;
+	padding: 0rpx 0 20rpx;
+}
+
+.list .item {
+	width: 100%;
+	background-color: #fff;
+	padding: 30rpx;
+	display: flex;
+	margin-bottom: 20rpx;
+}
+
+.list .item .left {
+	width: 200rpx;
+	display: flex;
+	justify-content: center;
+}
+
+.list .item .left>image {
+	max-width: 200rpx;
+	height: 150rpx;
+	border-radius: 12rpx;
+	margin-right: 20rpx; 
+}
+
+.list .item .right {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.list .item .right .line1 {
+	color: #000;
+	font-size: 32rpx;
+	font-weight: bold;
+}
+
+.list .item .right .tag-list {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.list .item .right .tag-list>view {
+	padding: 4rpx 10rpx;
+	border-radius: 4rpx;
+	background-color: #f8f8f8;
+	font-size: 22rpx;
+	margin-right: 10rpx;
+	color: #777;
+	margin-top: 10rpx;
+}
+
+.list .item .right .line2 {
+	margin-top: 14rpx;
+}
+
+.list .item .right .line2>text {
+	font-size: 26rpx;
+	background-color: #FFF3E7;
+	color: #FF8812;
+	padding: 6rpx 12rpx;
+	border-radius: 4rpx;
+}
+
+
+.list .item .arrow {
+	color: #ccc;
+	display: flex;
+	align-items: center;
+}

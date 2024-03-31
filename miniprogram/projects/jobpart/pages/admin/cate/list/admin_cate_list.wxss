@@ -1,0 +1,26 @@
+@import '../../../../../../style/public/admin.wxss';
+
+.admin-comm-list .item .info .info-item .title {
+	width: 170rpx;
+}
+
+.admin-comm-list .item .level {
+	position: absolute;
+	bottom: 0;
+	left: 10rpx;
+	z-index: 99999;
+	font-size: 24rpx;
+	color: #ccc;
+	opacity: .5;
+}
+
+.admin-comm-list .item .info { 
+	position: relative;
+}
+
+
+.admin-comm-list .item .info  .company {
+	position: absolute;
+	top: 10rpx;
+	right: 10rpx; 
+}

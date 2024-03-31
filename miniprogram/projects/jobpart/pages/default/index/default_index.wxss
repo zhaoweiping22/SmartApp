@@ -1,0 +1,311 @@
+@import "../../../../../style/public/comm_box_list.wxss";
+@import "../../../style/skin.wxss";
+
+
+
+.main {
+	padding: 0rpx 0rpx 100rpx;
+}
+
+.up {
+	width: 100%;
+}
+
+.up image {
+	width: 100%;
+	height: 500rpx;
+}
+
+.down {
+	width: 100%;
+	box-sizing: border-box;
+	margin-top: 10rpx;
+	z-index: 9999;
+	padding: 0 24rpx;
+}
+
+.menu {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	background-color: #fff;
+	margin-top: -60rpx;
+	padding: 30rpx 10rpx;
+	border-radius: 20rpx;
+}
+
+.menu .item {
+	width: 25%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.menu .item .item-inner {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+}
+
+.menu .item-inner .img {
+	width: 105rpx;
+	height: 105rpx;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu .item-inner .img image {
+	width: 70rpx;
+	height: 70rpx;
+}
+
+.menu .item-inner .title {
+	margin-top: 10rpx;
+	font-size: 26rpx;
+	color: #333;
+}
+
+
+/*** 图文列表盒子 ***/
+.home-list-box {
+	width: 100%;
+	box-sizing: border-box;
+	padding: 20rpx 30rpx 30rpx 30rpx;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	padding: 0;
+	margin-top: 40rpx;
+	overflow: unset;
+}
+
+.home-list-box .item {
+	padding: 0rpx 0rpx;
+	background-color: #fff;
+	border-radius: 20rpx;
+	position: relative;
+	max-height: 180rpx;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-direction: row;
+	margin-bottom: 70rpx;
+}
+
+.home-list-box .item:first-child {
+	margin-top: 60rpx;
+}
+
+.home-list-box .item .left {
+	width: 190rpx;
+	height: 210rpx;
+	margin-left: 0rpx;
+	margin-top: -30rpx;
+	border-radius: 15rpx !important;
+	overflow: hidden;
+	box-shadow: var(--ShadowSize) var(--greyShadow);
+}
+
+.home-list-box .item .right {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	margin-left: 20rpx;
+	margin-right: 20rpx;
+	justify-content: center;
+	align-items: flex-start;
+	position: relative;
+	padding: 15rpx 10rpx;
+}
+
+.home-list-box .item .right .title {
+	width: 100%;
+	font-size: 32rpx;
+	color: #000;
+	line-height: 1.5;
+	margin-top: 0rpx;
+	font-weight: bold;
+}
+
+.home-list-box .item .desc {
+	margin-top: 5rpx;
+	font-size: 28rpx;
+	color: #999;
+	line-height: 1.2;
+	height: 60rpx;
+	margin-bottom: 10rpx;
+}
+
+
+.home-list-box .item .data {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	margin-top: 0rpx;
+	color: #999;
+	font-size: 24rpx;
+	position: relative;
+}
+
+.area {
+	width: 100%;
+	background-color: #fff;
+	border-radius: 20rpx;
+	margin-top: 30rpx;
+	padding: 10rpx 0 20rpx;
+}
+
+.hot-line {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	padding: 10rpx 30rpx 10rpx;
+	align-items: center;
+	margin-top: 10rpx;
+	border-radius: 20rpx;
+	align-items: center;
+}
+
+.hot-line .left {
+	font-size: 30rpx;
+	font-weight: bold;
+	color: #333;
+	margin-top: 10rpx;
+	display: flex;
+	align-items: center;
+}
+
+.hot-line .icon-left {
+	width: 14rpx;
+	height: 36rpx;
+	background-image: linear-gradient(145deg, #FF8812, #FFDD52, #FFF3E7);
+	margin-right: 14rpx;
+	border-radius: 10rpx;
+}
+
+.hot-line .right {
+	font-size: 24rpx;
+	color: #bbb;
+}
+
+.scroll-x {
+	width: 100%;
+	padding: 0 28rpx;
+}
+
+.comm-list-box {
+	padding: 0rpx 10rpx 0rpx 10rpx;
+}
+
+.comm-list-scroll .item-scroll {
+	margin-left: 15rpx;
+	margin-right: 15rpx;
+	position: relative;
+	padding: 10rpx 0rpx;
+	text-align: center;
+	width: 152rpx;
+}
+
+.comm-list-scroll .item-scroll:first-child {
+	margin-left: 0rpx;
+}
+
+.comm-list-scroll .item-scroll image {
+	max-width: 152rpx;
+	height: 110rpx;
+	border-radius: 10rpx;
+	border: 0rpx solid var(--projectColorLight);
+}
+
+.comm-list-scroll .item-scroll .title {
+	width: 152rpx;
+	text-align: center;
+	font-size: 24rpx;
+	color: #666;
+	margin-top: 10rpx;
+}
+
+.text-cut1 {
+	text-overflow: hidden;
+	white-space: nowrap;
+	overflow: hidden;
+}
+
+.comm-list-box .item-leftbig1 .leftbig-left {
+	width: 220rpx;
+	height: 130rpx;
+}
+
+.comm-list-box .item-leftbig1 .leftbig-right .leftbig-title {
+	font-size: 28rpx;
+	color: #333;
+}
+
+.comm-list-box .item-leftbig1 .leftbig-desc {
+	font-size: 24rpx;
+	color: #aaa;
+	margin-top: 10rpx;
+}
+
+.comm-list-box .item-leftbig1 .leftbig-right {
+	height: 130rpx;
+}
+
+.vouch-list {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	padding: 20rpx 20rpx;
+}
+
+.vouch-list .item {
+	width: calc((100% - 20rpx) / 2);
+	display: flex;
+	background-image: linear-gradient(145deg, #f8f8f8, #fff);
+	margin-bottom: 20rpx;
+	border-radius: 6rpx;
+	padding: 20rpx;
+	flex-direction: column;
+	border: 2rpx solid #f3e6b1;
+}
+
+.vouch-list .item:nth-child(2n+1) {
+	margin-right: 20rpx;
+}
+
+.vouch-list .item .line1 {
+	font-size: 28rpx;
+	color: #333;
+	font-weight: bold;
+}
+
+.vouch-list .item .line2 {
+	font-size: 26rpx;
+	color: var(--red);
+	margin-top: 10rpx;
+}
+
+
+.vouch-list .item .line3 {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	font-size: 22rpx;
+	margin-top: 10rpx;
+}
+
+.vouch-list .item .line3>view {
+	padding: 4rpx 6rpx;
+	border-radius: 4rpx;
+	background-color: #fff;
+	font-size: 22rpx;
+	margin-right: 6rpx;
+	color: #999;
+}

@@ -1,0 +1,25 @@
+<view class="form-box shadow">
+	<view class="form-group">
+		<view class="title must">企业名称</view>
+	</view>
+
+	<view class="form-group">
+		<input placeholder="简短的分类名称" placeholder-class="phc" model:value="{{formTitle}}" focus="{{formTitleFocus}}" maxlength="50"></input>
+	</view>
+	<view wx:if="{{formTitleFocus}}" class="hint-desc error">{{formTitleFocus}}</view>
+
+	<view class="form-group">
+		<view class="title must">排序号<text class="text-grey text-normal margin-left-xs">(小的先显示)</text></view>
+		<input placeholder="排序号，小的先显示" type="number" placeholder-class="phc" model:value="{{formOrder}}" focus="{{formOrderFocus}}" maxlength="4"></input>
+	</view>
+	<view wx:if="{{formOrderFocus}}" class="hint-desc error">{{formOrderFocus}}</view> 
+ 
+</view>
+
+<view class="form-box shadow margin-top-xs">
+	<cmpt-form-show id="cmpt-form" mark="cmpt-form" source="admin" isCacheMatch="{{false}}" fields="{{fields}}" forms="{{formForms}}" isDefMatch="{{id?false:true}}">
+	</cmpt-form-show>
+</view>
+
+
+<button bindtap="bindFormSubmit" class="btn-admin margin-top-xs">{{!isEdit?'添加':'修改'}}企业</button>
